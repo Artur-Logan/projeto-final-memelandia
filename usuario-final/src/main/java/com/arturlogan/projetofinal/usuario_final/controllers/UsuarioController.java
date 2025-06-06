@@ -25,4 +25,9 @@ public class UsuarioController {
     public Usuario novoUsuario(@RequestBody Usuario usuario) {
         return usuarioService.novoUsuario(usuario);
     }
+
+    @GetMapping("/{id}")
+    public Usuario buscarUsuario(@PathVariable String id){
+        return usuarioService.buscar(id);
+    }
 }

@@ -14,12 +14,12 @@ public class MemeController {
 
     private final MemeService memeService;
 
-    @GetMapping("/memes")
+    @GetMapping()
     public List<Meme> buscaMemes() {
         return memeService.listaTodosMemes();
     }
 
-    @PostMapping("/memes")
+    @PostMapping()
     public Meme novoMeme(@RequestBody Meme meme) {
         return memeService.novoMeme(meme);
     }

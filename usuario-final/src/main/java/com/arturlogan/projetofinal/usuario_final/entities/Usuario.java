@@ -4,16 +4,15 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Data
 public class Usuario {
 
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    private String id;
 
     @Column(name = "nome", nullable = false)
     private String nome;
@@ -22,5 +21,12 @@ public class Usuario {
     private String email;
 
     @Column(name = "data_cadastro", nullable = false)
-    private LocalDate dataCadastro;
+    private Date dataCadastro;
+
+    @PrePersist
+    public void criarId() {
+        if (this.id == null || this.id.isEmpty()) {
+            this.id = UUID.randomUUID().toString();
+        }
+    }
 }
