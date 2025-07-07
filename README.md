@@ -162,6 +162,8 @@ src/
   1. Valida existência do usuário
   2. Para memes: valida existência da categoria
   3. Persiste no banco de dados
+ 
+- *Link do projeto original* : https://github.com/github-ebac/backend-java-pro/
 
  ## 🚀 Próximos Passos
 
