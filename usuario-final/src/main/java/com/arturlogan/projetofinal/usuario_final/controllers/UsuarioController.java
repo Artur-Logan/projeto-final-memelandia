@@ -3,8 +3,11 @@ package com.arturlogan.projetofinal.usuario_final.controllers;
 
 import com.arturlogan.projetofinal.usuario_final.entities.Usuario;
 import com.arturlogan.projetofinal.usuario_final.service.UsuarioService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,12 +25,13 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public Usuario novoUsuario(@RequestBody Usuario usuario) {
+    public Usuario novoUsuario(@Valid @RequestBody Usuario usuario) throws MethodArgumentNotValidException {
+
         return usuarioService.novoUsuario(usuario);
     }
 
     @GetMapping("/{id}")
-    public Usuario buscarUsuario(@PathVariable String id){
+    public Usuario buscarUsuario(@Valid @PathVariable String id){
         return usuarioService.buscar(id);
     }
 }
